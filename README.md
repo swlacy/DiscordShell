@@ -18,10 +18,10 @@ Client latency information request.
 [!] SHELL: Support for executing any arbitraty non-interactive commands.
 ![SHELL: Support for executing any arbitraty non-interactive commands.](/img/clientCommand.png)
 
-Support for uploading files under 4MB to the client (Discord API limitations).
+Support for uploading files to the client.
 ![Support for uploading files under 4MB to the client (Discord API limitations).](/img/clientUpload.png)
 
-Support for downloading files under 4MB from the client (Discord API limitations).
+Support for downloading files from the client.
 ![Support for uploading files under 4MB to the client (Discord API limitations).](/img/clientDownload.png)
 
 At-will client deauthorization.
@@ -33,7 +33,7 @@ At-will client deauthorization.
 
 1. Follow [these instructions](https://discordpy.readthedocs.io/en/stable/discord.html).
 2. Save the bot token for later use.
-3. Create a C2 channel in your discord, this is where the bot will accept commands. Copy the channel ID and save it for later.
+3. Create a C2 channel in your discord; this is where the bot will accept commands. Copy the channel ID and save it for later.
 4. Copy your user ID and save it for later use.
 
 ### Host
@@ -52,9 +52,9 @@ At-will client deauthorization.
 
 All supported commands are prefixed with `?`.
  - `?hosts`: Request the following information for every active client:
-    - IP address; click to navigate instantly to whois.domaintools.com/${IP}
+    - IP address; click to navigate instantly to `whois.domaintools.com/${IP}`
     - Alpha-2 country code of residence
-    - Estimated location coordinates; click to instantly navigate to google.com/maps?q=${latitude},${longitude}
+    - Estimated location coordinates; click to instantly navigate to `google.com/maps?q=${latitude},${longitude}`
     - Detected operating system
     - EUID (permissions)
     - Username and hostname
