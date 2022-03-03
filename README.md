@@ -33,7 +33,7 @@ At-will client deauthorization.
 
 1. Follow [these instructions](https://discordpy.readthedocs.io/en/stable/discord.html).
 2. Save the bot token for later use.
-3. Create a C2 channel in your discord, this is where the bot will accept commands. Copy this channels ID and save it for later.
+3. Create a C2 channel in your discord, this is where the bot will accept commands. Copy the channel ID and save it for later.
 4. Copy your user ID and save it for later use.
 
 ### Host
