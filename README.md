@@ -71,9 +71,11 @@ All supported commands are prefixed with `?`.
  - `?kill ${client_id}`: Terminate a specified client. Status message will be returned in a discord message.
     - Example: `?kill abcd1234`
 
-
+## Limitations
+ - The shell is only supported on Linux. Plan to eventually support Windows and MacOS.
+ 
 ## Plans
-
+ - MacOS and Windows support.
  - Better error handling.
  - Comprehensive logging.
  - Support for larger file uploading/downloading.
