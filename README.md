@@ -76,3 +76,4 @@ All supported commands are prefixed with `?`.
 
  - Better error handling.
  - Comprehensive logging.
+ - Support for larger file uploading/downloading.
